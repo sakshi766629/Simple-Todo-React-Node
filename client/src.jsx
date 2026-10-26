@@ -7,7 +7,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   async function loadTodos() {
-    const res = await fetch("http://localhost:5000/todos");
+    const res = await fetch("https://simple-todo-react-node.onrender.com/todos");
     setTodos(await res.json());
   }
 
@@ -16,7 +16,7 @@ function App() {
   async function addTodo(e) {
     e.preventDefault();
     if (!text.trim()) return;
-    await fetch("http://localhost:5000/todos", {
+    await fetch("https://simple-todo-react-node.onrender.com/todos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text })
@@ -26,12 +26,12 @@ function App() {
   }
 
   async function toggleTodo(id) {
-    await fetch(`http://localhost:5000/todos/${id}`, { method: "PATCH" });
+    await fetch(`https://simple-todo-react-node.onrender.com/todos/${id}`, { method: "PATCH" });
     loadTodos();
   }
 
   async function deleteTodo(id) {
-    await fetch(`http://localhost:5000/todos/${id}`, { method: "DELETE" });
+    await fetch(`https://simple-todo-react-node.onrender.com/todos/${id}`, { method: "DELETE" });
     loadTodos();
   }
 
